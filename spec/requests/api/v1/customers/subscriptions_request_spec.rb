@@ -269,4 +269,117 @@ describe "Customer Subscriptions" do
       end
     end
   end
+  describe '#update -- cancel subscription' do
+    describe 'Happy Path' do
+      it "Can cancel a customer's subscription without deleting it" do
+        create(:customer)
+        create_list(:tea, 3)
+        create(:subscription, customer_id: Customer.first.id, status: 1)
+        3.times do
+          create(:subscription_tea, subscription_id: Subscription.ids.sample, tea_id: Tea.ids.sample)
+        end
+
+        mock_customer = Customer.first.id
+        mock_subscription = Subscription.first.id
+
+        input_body = {
+          'id': mock_subscription,
+          'customer_id': mock_customer,
+          'change': 'cancel'
+        }
+
+        patch api_v1_customer_subscription_path(input_body)
+
+        expect(response).to be_successful
+        expect(response.status).to eq 200
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:data][:attributes][:status]).to eq 'cancelled'
+      end
+    end
+
+    describe 'Sad Path' do
+      it "Returns an error if subscription doesn't exist" do
+        create(:customer)
+        create_list(:tea, 3)
+        create(:subscription, customer_id: Customer.first.id, status: 0)
+        3.times do
+          create(:subscription_tea, subscription_id: Subscription.ids.sample, tea_id: Tea.ids.sample)
+        end
+
+        mock_customer = Customer.first.id
+        mock_subscription = Subscription.first.id
+
+        input_body = {
+          'id': 50000,
+          'customer_id': mock_customer,
+          'change': 'cancel'
+        }
+
+        patch api_v1_customer_subscription_path(input_body)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq 404
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:description]).to eq 'Error: Invalid parameters'
+      end
+
+      xit "Returns an error if customer doesn't exist" do
+        create(:customer)
+        create_list(:tea, 3)
+        create(:subscription, customer_id: Customer.first.id, status: 0)
+        3.times do
+          create(:subscription_tea, subscription_id: Subscription.ids.sample, tea_id: Tea.ids.sample)
+        end
+
+        mock_customer = Customer.first.id
+        mock_subscription = Subscription.first.id
+
+        input_body = {
+          'id': mock_subscription,
+          'customer_id': mock_customer+5000,
+          'change': 'cancel'
+        }
+
+        patch api_v1_customer_subscription_path(input_body)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq 404
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:description]).to eq 'Error: Invalid parameters'
+      end
+
+      it "Returns an error if trying to update a subscription that is already cancelled" do
+        create(:customer)
+        create_list(:tea, 3)
+        create(:subscription, customer_id: Customer.first.id, status: 0)
+        3.times do
+          create(:subscription_tea, subscription_id: Subscription.ids.sample, tea_id: Tea.ids.sample)
+        end
+
+        mock_customer = Customer.first.id
+        mock_subscription = Subscription.first.id
+
+        input_body = {
+          'id': mock_subscription,
+          'customer_id': mock_customer,
+          'change': 'cancel'
+        }
+
+        patch api_v1_customer_subscription_path(input_body)
+
+        expect(response).to_not be_successful
+        expect(response.status).to eq 404
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:description]).to eq 'Error: Subscription is already cancelled'
+      end
+    end
+  end
 end
