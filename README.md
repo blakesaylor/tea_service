@@ -3,6 +3,7 @@
 ![ruby](https://img.shields.io/badge/Ruby-2.7.4-red)
 ![rails](https://img.shields.io/badge/Rails-5.2.8.1-red)
 ![rspec](https://img.shields.io/badge/RSpec-3.11.0-green)
+![contributors](https://img.shields.io/badge/Contributors-5-yellow)
 
 ## Table of Contents
 - [Wetectives Back End Repo](#wetectives-back-end-repo)
