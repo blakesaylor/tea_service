@@ -6,7 +6,7 @@
 ![contributors](https://img.shields.io/badge/Contributors-1-blue)
 
 ## Table of Contents
-- [Tea Service Back End Repo](#tea-service-back-end-repository)
+- [Tea Service Back End Repository](#tea-service-back-end-repository)
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Schema](#schema)
