@@ -25,7 +25,7 @@ The Tea Service back end repository was a Take Home project for Turing School of
 
 - Get all of a Customer's Subscriptions
 ```shell
-GET http://localhost:3000/api/v1/customer/:customer_id/subscriptions
+GET http://localhost:3000/api/v1/customer/1/subscriptions
 
   "data": {
         "id": "1",
@@ -57,7 +57,16 @@ GET http://localhost:3000/api/v1/customer/:customer_id/subscriptions
 
 - Create a new Subscription
 ```shell
-POST http://localhost:3000/api/v1/customer/:customer_id/subscriptions
+input_body = {
+    "customer_id": 1,
+    "name": "Test Tea",
+    "frequency": 1,
+    "teas": [ 1 ]
+}
+```
+
+```shell
+POST http://localhost:3000/api/v1/customer/1/subscriptions
 
 "data": {
         "id": "7",
@@ -93,7 +102,15 @@ POST http://localhost:3000/api/v1/customer/:customer_id/subscriptions
 
 - Cancel an existing Subscription
 ```shell
-PATCH http://localhost:3000/api/v1/customer/:customer_id/subscriptions/:id
+input_body = {
+    "id": 7,
+    "customer_id": 1,
+    "change": "cancel"
+}
+```
+
+```shell
+PATCH http://localhost:3000/api/v1/customer/1/subscriptions/7
 
 "data": {
         "id": "7",
