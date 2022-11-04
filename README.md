@@ -1,9 +1,9 @@
 # Tea Service Back End Repository
 
 ![ruby](https://img.shields.io/badge/Ruby-2.7.2-red)
-![rails](https://img.shields.io/badge/Rails-5.2.8.1-red)
-![rspec](https://img.shields.io/badge/RSpec-3.12.0-green)
-![contributors](https://img.shields.io/badge/Contributors-1-yellow)
+![rails](https://img.shields.io/badge/Rails-5.2.8.1-green)
+![rspec](https://img.shields.io/badge/RSpec-3.12.0-yellow)
+![contributors](https://img.shields.io/badge/Contributors-1-blue)
 
 ## Table of Contents
 - [Tea Service Back End Repo](#tea-service-back-end-repository)
