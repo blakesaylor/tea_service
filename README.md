@@ -1,4 +1,4 @@
-# Tea Service Back End Repo
+# Tea Service Back End Repository
 
 ![ruby](https://img.shields.io/badge/Ruby-2.7.2-red)
 ![rails](https://img.shields.io/badge/Rails-5.2.8.1-red)
@@ -6,7 +6,7 @@
 ![contributors](https://img.shields.io/badge/Contributors-1-yellow)
 
 ## Table of Contents
-- [Wetectives Back End Repo](#wetectives-back-end-repo)
+- [Tea Service Back End Repo](#tea-service-back-end-repository)
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Schema](#schema)
