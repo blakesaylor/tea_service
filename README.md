@@ -1,24 +1,3 @@
-# README
+# Schema
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Schema](<img width="1006" alt="Screenshot 2022-11-04 at 9 12 54 AM" src="https://user-images.githubusercontent.com/47160926/200009875-31137988-4fa0-4792-b536-aafbe6343868.png">)
